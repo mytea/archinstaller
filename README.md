@@ -1,3 +1,8 @@
+##
+Run at first ./startqarch
+A frontend brutaly scripted
+## added  clients for emails, browsers and tor browser
+
 # archinstaller
 Automated installation script for arch linux written in bash.
 It works similar to preseeding the debian installer d-i.
