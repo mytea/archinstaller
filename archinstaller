@@ -1,6 +1,6 @@
 #!/bin/bash
-
 ##############################################################
+# archinstaller mytea fork from:
 # title		: archinstaller
 # description	: Automated installation script for arch linux
 # authors	: Dennis Anfossi,
@@ -10,9 +10,11 @@
 # version	: 0.7.8.7
 # license	: GPLv2
 # usage		: Edit ari.conf and run ./archinstaller
+#
+#
 ##############################################################
 
-declare -r VERSION='0.7.8.8'
+declare -r VERSION='0.1btest-preview'
 
 # colors
 unset ALL_OFF GREEN RED
@@ -227,6 +229,22 @@ if [[ "$xorg" = 'yes' ]]; then
 else
 	[[ "$xorg" = 'no' ]] || config_fail 'xorg'
 fi
+### browser
+case "$browser" in
+	no|firefox|midori|chromium) ;;
+		*) config_fail 'browser';;
+esac
+###tor browser
+case $tor_browser in
+	no|yes) ;;
+	*) config_fail 'tor_browser';;
+esac
+
+###client email
+case client_mail in
+	no|thunderbird|kmail|evolution|claws-mail) ;;
+	*) config_fail 'client_mail'
+
 
 # no config_fail beyond this point
 printf "$GREEN"
@@ -421,6 +439,26 @@ case "$display_manager" in
 	xdm)	pacman_install xorg-xdm;;
 esac
 }
+# install browser
+case "$browser" in
+	no) ;;
+	firefox) pacman_install firefox;;
+	midori) pacman_install  midori;;
+	chromium) pacman_install chromium;;
+esac
+# install tor browser
+case "tor_browser" in
+	no) ;;
+	yes) pacman_install tor_browser
+esac
+# install client email
+case "client_mail" in
+	no) ;;
+	thunderbird) pacman_install thunderbird;;
+	kmail) pacman_install kmail;;
+	evolution) pacman_install evolution;;
+	claws-mail) pacman_install claws-mail;;
+esac
 
 configure_system() {
 message 'Configuring system..'
