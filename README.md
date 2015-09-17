@@ -1,6 +1,6 @@
 ##
 Run at first ./startqarch
-A frontend brutaly scripted
+A frontend brutally scripted
 ## added  clients for emails, browsers and tor browser
 
 # archinstaller
@@ -30,9 +30,11 @@ All utilities are included on archiso, which can be downloaded at https://www.ar
 ### Without git
 - download the tarball: `curl -L https://github.com/vitamins/archinstaller/tarball/master | tar xz`
 
-## Usage
+### Usage
 - Edit the configuration file: `nano ari.conf`
 - Run the script: `./archinstaller`
+#Or
+- Run ./startqarch.sh like ari.conf frontend 
 
 ## Features
 - Configured in a single file
